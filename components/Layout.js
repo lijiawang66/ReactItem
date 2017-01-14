@@ -1,13 +1,15 @@
-var Layout = React.createClass({
-	render:function(){
+class Layout extends React.Component{
+	render(){
 		return(
 			<div>
-				<div id="header"></div>
-				<div id="section"></div>
-				<div id="footer"></div>
+				<div id="container">
+					<div id="header"></div>
+					<div id="section"></div>
+					<div id="footer"></div>
+				</div>
 			</div>
 		)
 	}
-})
+}
 
-module.exports = Layout
+export default Layout

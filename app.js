@@ -1,39 +1,39 @@
 require('./app.scss')
 import {Router,Route,hashHistory} from "react-router"
-import Layout from "./components/layout"
-import Section from "./components/section"
-import Footer from "./components/footer"
-import Header from "./components/header"
 
-import Classify from "./components/classify";
-import ShopCar from "./components/shopcar";
-import My from "./components/my";
+import Layout from "./components/layout"
+import Header from "./components/header"
+import Section from "./components/section"
+
+import Index from "./components/index"
+import Classify from "./components/classify"
+import ShopCar from "./components/shopcar"
+import My from "./components/my"
 
 const routes= {
-	path:"/",
-	component:Footer,
+	path:"/index",
+	component : Index, //路由开始显示的页面,
+	indexRoute : {component:Layout},
 	childRoutes:[
 		{
-			path:"/layout",
-			component:Layout,
+			path:"/index",
+			component:Layout
 		},
 		{
 			path:"/classify",
 			component:Classify
 		},
 		{
-			path:"shopcar",
+			path:"/shopcar",
 			component:ShopCar
 		},
     {
-      path:"my",
+      path:"/my",
       component:My
     }
 	]
 }
 
 ReactDOM.render(<Router routes={routes} history={hashHistory}/>,document.getElementById("app"))
-ReactDOM.render(<Layout />,document.getElementById("app"))
 ReactDOM.render(<Header/>,document.getElementById('header'))
 ReactDOM.render(<Section/>,document.getElementById('section'))
-ReactDOM.render(<Footer/>,document.getElementById('footer'))

@@ -52,17 +52,17 @@
 	
 	var _layout2 = _interopRequireDefault(_layout);
 	
-	var _section = __webpack_require__(89);
+	var _header = __webpack_require__(89);
+	
+	var _header2 = _interopRequireDefault(_header);
+	
+	var _section = __webpack_require__(90);
 	
 	var _section2 = _interopRequireDefault(_section);
 	
-	var _footer = __webpack_require__(90);
+	var _index = __webpack_require__(91);
 	
-	var _footer2 = _interopRequireDefault(_footer);
-	
-	var _header = __webpack_require__(91);
-	
-	var _header2 = _interopRequireDefault(_header);
+	var _index2 = _interopRequireDefault(_index);
 	
 	var _classify = __webpack_require__(92);
 	
@@ -82,10 +82,11 @@
 	
 	
 	var routes = {
-		path: "/footer",
-		component: _footer2.default,
+		path: "/",
+		component: _index2.default, //路由开始显示的页面,
+		indexRoute: { component: _layout2.default },
 		childRoutes: [{
-			path: "/layout",
+			path: "/index",
 			component: _layout2.default
 		}, {
 			path: "/classify",
@@ -100,10 +101,8 @@
 	};
 	
 	ReactDOM.render(React.createElement(_reactRouter.Router, { routes: routes, history: _reactRouter.hashHistory }), document.getElementById("app"));
-	ReactDOM.render(React.createElement(_layout2.default, null), document.getElementById("app"));
 	ReactDOM.render(React.createElement(_header2.default, null), document.getElementById('header'));
 	ReactDOM.render(React.createElement(_section2.default, null), document.getElementById('section'));
-	ReactDOM.render(React.createElement(_footer2.default, null), document.getElementById('footer'));
 
 /***/ },
 /* 1 */
@@ -9181,10 +9180,9 @@
 					null,
 					React.createElement(
 						"div",
-						{ id: "container" },
+						{ id: "index" },
 						React.createElement("div", { id: "header" }),
-						React.createElement("div", { id: "section" }),
-						React.createElement("div", { id: "footer" })
+						React.createElement("div", { id: "section" })
 					)
 				);
 			}
@@ -9197,150 +9195,6 @@
 
 /***/ },
 /* 89 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var Section = React.createClass({
-		displayName: "Section",
-	
-		getDefaultProps: function getDefaultProps() {
-			return {
-				"url": "http://datainfo.duapp.com/shopdata/getBanner.php"
-			};
-		},
-		getInitialState: function getInitialState() {
-			return {
-				"reset": ""
-			};
-		},
-		componentWillMount: function componentWillMount() {
-			var This = this;
-			$.ajax({
-				url: this.props.url,
-				dataType: "jsonp",
-				success: function success(res) {
-					This.setState({
-						"reset": res
-					});
-				}
-			});
-		},
-		render: function render() {
-			// console.log(this.state.reset);
-			var arr = [];
-			var reset = this.state.reset;
-			if (reset) {
-				for (var i = 0; i < reset.length; i++) {
-					console.log(reset[i].goodsName);
-					arr.push(React.createElement(
-						"p",
-						null,
-						reset[i].goodsName
-					));
-				}
-			}
-			return React.createElement(
-				"div",
-				null,
-				React.createElement(
-					"div",
-					null,
-					arr
-				)
-			);
-		}
-	});
-	
-	module.exports = Section;
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _reactRouter = __webpack_require__(1);
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Footer = function (_React$Component) {
-		_inherits(Footer, _React$Component);
-	
-		function Footer(props) {
-			_classCallCheck(this, Footer);
-	
-			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
-		}
-	
-		_createClass(Footer, [{
-			key: "render",
-			value: function render() {
-				return React.createElement(
-					"div",
-					null,
-					this.props.children,
-					React.createElement(
-						"ul",
-						null,
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								_reactRouter.Link,
-								{ to: "/layout" },
-								"\u9996\u9875"
-							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								_reactRouter.Link,
-								{ to: "/classify" },
-								"\u5206\u7C7B"
-							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								_reactRouter.Link,
-								{ to: "/shopcar" },
-								"\u8D2D\u7269\u8F66"
-							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								_reactRouter.Link,
-								{ to: "/my" },
-								"\u6211\u7684"
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return Footer;
-	}(React.Component);
-	
-	exports.default = Footer;
-
-/***/ },
-/* 91 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9432,6 +9286,156 @@
 	}(React.Component);
 	
 	exports.default = Header;
+
+/***/ },
+/* 90 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var Section = React.createClass({
+		displayName: "Section",
+	
+		getDefaultProps: function getDefaultProps() {
+			return {
+				"url": "http://datainfo.duapp.com/shopdata/getBanner.php"
+			};
+		},
+		getInitialState: function getInitialState() {
+			return {
+				"reset": ""
+			};
+		},
+		componentWillMount: function componentWillMount() {
+			var This = this;
+			$.ajax({
+				url: this.props.url,
+				dataType: "jsonp",
+				success: function success(res) {
+					This.setState({
+						"reset": res
+					});
+				}
+			});
+		},
+		render: function render() {
+			// console.log(this.state.reset);
+			var arr = [];
+			var reset = this.state.reset;
+			if (reset) {
+				for (var i = 0; i < reset.length; i++) {
+					console.log(reset[i].goodsName);
+					arr.push(React.createElement(
+						"p",
+						null,
+						reset[i].goodsName
+					));
+				}
+			}
+			return React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"div",
+					null,
+					arr
+				)
+			);
+		}
+	});
+	
+	module.exports = Section;
+
+/***/ },
+/* 91 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _reactRouter = __webpack_require__(1);
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	//想让路由在那个页面进行集合 那么我们需要在那个页面引入 {this.props.children}
+	//Index 组件的目的单页面路由的集合
+	var Index = function (_React$Component) {
+	  _inherits(Index, _React$Component);
+	
+	  function Index(props) {
+	    _classCallCheck(this, Index);
+	
+	    return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+	  }
+	
+	  _createClass(Index, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "div",
+	        { id: "box" },
+	        this.props.children,
+	        React.createElement(
+	          "div",
+	          { id: "footer" },
+	          React.createElement(
+	            "ul",
+	            null,
+	            React.createElement(
+	              "li",
+	              null,
+	              React.createElement(
+	                _reactRouter.Link,
+	                { to: "/index" },
+	                "\u9996\u9875"
+	              )
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              React.createElement(
+	                _reactRouter.Link,
+	                { to: "/classify" },
+	                "\u5206\u7C7B"
+	              )
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              React.createElement(
+	                _reactRouter.Link,
+	                { to: "/shopcar" },
+	                "\u8D2D\u7269\u8F66"
+	              )
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              React.createElement(
+	                _reactRouter.Link,
+	                { to: "/my" },
+	                "\u6211\u7684"
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Index;
+	}(React.Component);
+	
+	exports.default = Index;
 
 /***/ },
 /* 92 */

@@ -1,12 +1,10 @@
 class Layout extends React.Component{
 	render(){
 		return(
-			<div>
-				<div id="container">
+			<div id="index">
+					我是首页
 					<div id="header"></div>
 					<div id="section"></div>
-					<div id="footer"></div>
-				</div>
 			</div>
 		)
 	}
